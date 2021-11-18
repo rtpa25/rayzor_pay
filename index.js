@@ -2,6 +2,7 @@
 
 const express = require('express');
 const Razorpay = require('razorpay');
+require('dotenv').config();
 const app = express();
 app.use(express.static('./public'));
 app.use(express.json());
@@ -15,7 +16,7 @@ app.post('/order', async (req, res) => {
 
   var instance = new Razorpay({
     key_id: 'rzp_test_UPE6wVTcrQOChU',
-    key_secret: 'eObRSzvriJI2gk13P5lxR4OB',
+    key_secret: process.env.KEY_SECRET,
   });
 
   var options = {
